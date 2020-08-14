@@ -1,32 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
+    <van-tabbar route v-model="active">
+      <van-tabbar-item replace to="/" icon="home-o">
+        首页
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/about" icon="orders-o">
+        介绍
+      </van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { Tabbar, TabbarItem, Button } from 'vant';
 
-#nav {
-  padding: 30px;
+export default {
+  name: 'app',
+  components: {
+    [Tabbar.name]: Tabbar,
+    [TabbarItem.name]: TabbarItem,
+    [Button.name]: Button,
+  },
+  data() {
+    return {
+      active: 0,
+    };
+  },
+};
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style>
 </style>
